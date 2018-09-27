@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[russianb]{babel}
+\usepackage[usenames]{color}
+\usepackage{vmargin}
+\usepackage{ amssymb }
+\usepackage{listings}
+\usepackage[linesnumbered,boxed]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage[noend]{algorithmic}
+\onehalfspacing
+\setpapersize{A4}
+\setmarginsrb{3cm}{2cm}{3cm}{2cm}{0pt}{0mm}{0pt}{13mm}
+\sloppy
+\renewcommand\contentsname{Оглавление}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\begin{document}
+
+\null\hfill\begin{tabular}[t]{l@{}}
+	\textit{Kirill Zuev}
+\end{tabular}
+
+\begin{center}
+	\textbf{Home assignment № 1}
+\end{center}
+
+\textbf{Task 1.}
+
+$U$ is a finite set, $f: U \to U$ and $f$ is a surjective function. It means that
+$$\forall y \in U~\exists x \in U: f(x) = y$$
+
+Let $f$ is \textbf{not} an injective function. Then $\exists x_1 \neq x_2: f(x_1) = f(x_2)$. And also $\exists y'~\nexists x: f(x) = y'$. But $U$ is finite set and $\forall y \in U~\exists x \in U: f(x) = y$. Therefore,
+$$\forall x_1, x_2: f(x_1) = f(x_2) \Rightarrow x_1 = x_2 $$
+It means that $f$ is also an injective function.\\
+
+\textbf{Task 2.}
+
+a) Asymmetric and transitive: 4231\\
+Computate this number by a Haskell script \textit{TransitiveAsymmetricRelations.hs}.\\
+
+b) Antisymmetric and antireflexive: $3^{10}$\\
+Consider the relation matrix $P$. Diagonal elements $p_{ii}$ must be always 0. For non-diagonal elements:
+$$\forall i, j: (p_{ij} = 1 \land p_{ji} = 0) \lor (p_{ij} = 1 \land p_{ji} = 0) \lor (p_{ij} = 0 \land p_{ji} = 0) $$
+There are 10 pairs of different set elements and all of them have 3 of 4 variants of values. Therefore, we have a result: $3^{10}$.\\
+
+\textbf{Task 3.}
+
+In Task 2 I wrote a Haskell script (\textit{TransitiveAsymmetricRelations.hs}) including a function \textit{isTransitive}. This function get a relation matrix $P$ ($n \times n$), square it ($O(n^3)$) and check that result of multiplication is including on original relation matrix $P^2 \subseteq P$ ($O(n^2)$). As result we have a complexity: $O(n^3 + n^2) = O(n^3)$.\\
+
+\textbf{Task 4.}
+
+
+
+\textbf{Task 5.}
+
+$R: (x_1, y_1) R (x_2, y_2) \leftrightarrow x_1 \leq x_2, y_1 \leq y_2$.\\
+
+$R$ is reflexive.\\
+$\forall (x,y) \in Z^2: x \leq x,~y \leq y$, because $\leq$ is reflexive $\Rightarrow (x,y) R (x,y)$.\\
+
+$R$ is transitive.\\
+$\forall (x_1,y_1), (x_2,y_2), (x_3,y_3): (x_1,y_1) R (x_2,y_2), (x_2,y_2) R (x_3,y_3) \Rightarrow x_1 \leq x_2,~y_1 \leq y_2,~x_2 \leq x_3$,\ $y_2 \leq y_3$. $\leq$ is transitive $\Rightarrow x_1 \leq x_3,~y_1 \leq y_3 \Rightarrow (x_1,y_1) R (x_3,y_3)$.\\
+
+$R$ is antisymmetric.\\
+$\forall (x_1,y_1), (x_2,y_2): (x_1,y_1) R (x_2,y_2), (x_2,y_2) R (x_1,y_1) \Rightarrow x_1 \leq x_2,~y_1 \leq y_2,~x_2 \leq x_1,~y_2 \leq y_1$. $\leq$~is~antisymmetric $\Rightarrow x_1 = x_2,~y_1 = y_2 \Rightarrow (x_1,y_1) = (x_2,y_2)$.\\
+
+It means that $R$ is a partial order.\\
+
+1) $A_1 = {(x,y)~|~x \leq 3,~y \leq 4}$
+
+$\nexists min,~max = (3,4)$.\\
+
+2) $A_2 = {(x,y)~|~x^2 + y^2 \leq 4}$
+
+$min = (-2,-2),~max = (2,2)$.
+
+ \end{document}
