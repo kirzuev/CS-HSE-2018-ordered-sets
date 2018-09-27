@@ -1,5 +1,4 @@
 import Data.Matrix
-import Control.DeepSeq (force)
 
 instance Num Bool where
     False + False = False
@@ -41,14 +40,14 @@ inM m1 m2 = and $
   zipWith (\x y -> x == y || y == True) (toList m1) (toList m2)
 
 isTransitive :: Matrix Bool -> Bool
-isTransitive m = (force (multStd2 m m)) `inM` m
+isTransitive m = multStd2 m m `inM` m
 
 isAsymmetric :: Matrix Bool -> Bool
-isAsymmetric m = force $ and $
+isAsymmetric m = and $
   zipWith (\x y -> not (x == True && y == True)) (toList m) (toList (transpose m))
 
 main :: IO ()
 main = do
-  as <- return $ filter isAsymmetric (force matrices5x5)
-  putStrLn $ "Asymmetric: " ++ show (length as)
-  putStrLn $ "Transitive + asymmetric: " ++ show (length (filter isTransitive as))
+  res <- return $
+    filter (\x -> isAsymmetric x && isTransitive x) matrices5x5
+  putStrLn $ "Transitive + asymmetric: " ++ show (length res)
