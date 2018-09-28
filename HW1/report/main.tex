@@ -40,20 +40,26 @@ It means that $f$ is also an injective function.\\
 \textbf{Task 2.}
 
 a) Asymmetric and transitive: 4231\\
-Computate this number by a Haskell script \textit{TransitiveAsymmetricRelations.hs}.\\
+Computate this number by a Haskell program \textit{TransitiveAsymmetricRelations.hs}.\\
 
 b) Antisymmetric and antireflexive: $3^{10}$\\
-Consider the relation matrix $P$. Diagonal elements $p_{ii}$ must be always 0. For non-diagonal elements:
-$$\forall i, j: (p_{ij} = 1 \land p_{ji} = 0) \lor (p_{ij} = 1 \land p_{ji} = 0) \lor (p_{ij} = 0 \land p_{ji} = 0) $$
+Consider the relation matrix $P$. Diagonal elements $p_{ii}$ $(i = 1 \dots 5)$ must be always 0. For non-diagonal elements:
+$$\forall i, j = 1 \dots 5,~i \neq j: (p_{ij} = 1 \land p_{ji} = 0) \lor (p_{ij} = 1 \land p_{ji} = 0) \lor (p_{ij} = 0 \land p_{ji} = 0) $$
 There are 10 pairs of different set elements and all of them have 3 of 4 variants of values. Therefore, we have a result: $3^{10}$.\\
 
 \textbf{Task 3.}
 
-In Task 2 I wrote a Haskell script (\textit{TransitiveAsymmetricRelations.hs}) including a function \textit{isTransitive}. This function get a relation matrix $P$ ($n \times n$), square it ($O(n^3)$) and check that result of multiplication is including on original relation matrix $P^2 \subseteq P$ ($O(n^2)$). As result we have a complexity: $O(n^3 + n^2) = O(n^3)$.\\
+In Task 2 I wrote a Haskell program (\textit{TransitiveAsymmetricRelations.hs}) including a function \textit{isTransitive}. This function get a relation matrix $P$ ($n \times n$), square it ($O(n^3)$) and check that result of multiplication is including on original relation matrix $P^2 \subseteq P$ ($O(n^2)$). As result we have a complexity: $O(n^3 + n^2) = O(n^3)$.\\
 
 \textbf{Task 4.}
 
+Another my Haskell program (\textit{TopologicalSort.hs}) include topological sort algorithm with two types of input data: list of edges (a) and adjacency matrix (b).\\
 
+a) List of edges complexity: $O(n+m)$
+
+b) Adjacency matrix complexity: $O(n^2)$
+
+where $n$ --- number of vertices, $m$ --- number of edges.\\
 
 \textbf{Task 5.}
 
