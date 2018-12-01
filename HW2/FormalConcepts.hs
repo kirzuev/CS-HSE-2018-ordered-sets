@@ -46,7 +46,7 @@ getFormalConcepts m = fst <$> filter snd pairs
     pairs = zipWith (\a b -> ((sort a, sort b), eq (up m a) b)) as bs
 
 showFCList :: [([Int], [Int])] -> String
-showFCList []     = ""
+showFCList []         = ""
 showFCList ((a,b):xs) = "A = " ++ show a ++ ", B = " ++ show b ++ "\n" ++ showFCList xs
 
 main :: IO ()
